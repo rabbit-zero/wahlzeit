@@ -169,17 +169,21 @@ public class PhotoTest {
 
 
     @Test
-    public void test() {
+    public void testBooleanMethods() {
 
         assertTrue(testPhoto.isVisible());
+
         assertFalse(testPhoto.isWiderThanHigher());
-        Tags tags = new Tags("test-Tag");
+        Tags tags = new Tags("testtag");
         testPhoto.setTags(tags);
         assertTrue(testPhoto.hasTag("testtag"));
 
-        //TODO
-        //hasSameOwner(photo)
-        //hasPhotoSize()photosize
+        Photo otherPhoto = new Photo();
+        otherPhoto.setOwnerName("Tester");
+        assertTrue(testPhoto.hasSameOwner(otherPhoto));
+
+        PhotoSize size = PhotoSize.MEDIUM;
+        assertTrue(testPhoto.hasPhotoSize(size));
 
     }
 
