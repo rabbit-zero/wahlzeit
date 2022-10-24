@@ -177,6 +177,7 @@ public class PhotoTest {
         testPhoto.setTags(tags);
         assertTrue(testPhoto.hasTag("testtag"));
 
+        //TODO
         //hasSameOwner(photo)
         //hasPhotoSize()photosize
 
