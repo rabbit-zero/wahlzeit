@@ -22,7 +22,7 @@ public class PhotoTest {
 
     @Before
     public void initPhoto() {
-        PhotoId id = PhotoId.getRandomId();
+        PhotoId id = PhotoId.getNextId();
         testPhoto = new Photo(id);
         assertNotNull(testPhoto);
     }
