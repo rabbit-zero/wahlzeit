@@ -41,6 +41,12 @@ public class Photo extends DataObject {
 	public static final int MAX_PHOTO_HEIGHT = 600;
 	public static final int MAX_THUMB_PHOTO_WIDTH = 105;
 	public static final int MAX_THUMB_PHOTO_HEIGHT = 150;
+
+	/**
+	 *
+	 */
+	public Location location;
+
 	
 	/**
 	 * 
@@ -193,6 +199,12 @@ public class Photo extends DataObject {
 	public int getOwnerId() {
 		return ownerId;
 	}
+
+	/**
+	 *
+	 * @methodtype get
+	 */
+	public Location getLocation() { return location; }
 	
 	/**
 	 * 
@@ -217,6 +229,15 @@ public class Photo extends DataObject {
 	 */
 	public void setOwnerName(String newName) {
 		ownerName = newName;
+		incWriteCount();
+	}
+
+	/**
+	 *
+	 * @methodtype set
+	 */
+	public void setLocation(Location newLocation){
+		location = newLocation;
 		incWriteCount();
 	}
 	
