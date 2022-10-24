@@ -52,4 +52,25 @@ public class Coordinate {
     }
 
 
+
+    /**
+     *
+     *
+     */
+    public double getDistance(Coordinate destination){
+        //ToDo
+        return 0.00;
+    }
+
+
+    /**
+     *
+     *
+     */
+    public boolean isEqual(Coordinate otherCoordinate){
+        //ToDo
+        return false;
+    }
+
+
 }

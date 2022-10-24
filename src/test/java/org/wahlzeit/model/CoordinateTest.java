@@ -44,4 +44,6 @@ public class CoordinateTest {
 
     }
 
+    //ToDo: Add tests for getDistance() and isEqual()
+
 }
