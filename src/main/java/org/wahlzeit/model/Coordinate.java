@@ -55,11 +55,16 @@ public class Coordinate {
 
     /**
      *
-     *
+     * @methodtype get
      */
-    public double getDistance(Coordinate destination){
-        //ToDo
-        return 0.00;
+    public double getDistance(Coordinate otherCoordinate){
+        //formula √[(x₂ - x₁)² + (y₂ - y₁)²]
+        //pythagoras a, b, c
+        double a = otherCoordinate.getX() - x;
+        double b = otherCoordinate.getY() - y;
+        double c_square = Math.pow(a, 2) + Math.pow(b, 2);
+
+        return Math.sqrt(c_square);
     }
 
 
