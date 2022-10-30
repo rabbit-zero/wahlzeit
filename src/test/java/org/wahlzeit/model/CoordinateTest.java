@@ -1,10 +1,10 @@
 package org.wahlzeit.model;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class CoordinateTest {
 
@@ -44,6 +44,32 @@ public class CoordinateTest {
 
     }
 
-    //ToDo: Add tests for getDistance() and isEqual()
+
+    /**
+     *
+     */
+    @Test
+    public void testGetDistance(){
+        Coordinate a = new Coordinate(3, 6, 10);
+        Coordinate b = new Coordinate(27, 76, 28);
+        double calculatedDistance = 76.16;
+
+        assertEquals(calculatedDistance, a.getDistance(b), 0.1);
+    }
+
+
+    /**
+     *
+     */
+    @Test
+    public void testEquals(){
+        Coordinate a = new Coordinate(12.4, 394.87, 73.27);
+        assertTrue(a.equals(a));
+
+        Coordinate b = new Coordinate(73.7, 73.9, 73.2);
+        assertFalse(a.equals(b));
+
+    }
+
 
 }
