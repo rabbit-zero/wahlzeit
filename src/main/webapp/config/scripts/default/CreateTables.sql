@@ -56,9 +56,19 @@ CREATE TABLE globals (
 	last_session_id integer
 );
 
+
+CREATE TABLE locations (
+     id integer PRIMARY KEY,
+     name text,
+     x double precision,
+     y double precision,
+     z double precision
+);
+
 INSERT INTO globals (id, last_user_id, last_photo_id, last_case_id, last_session_id)
 	VALUES (0, 1, 0, 0, 0);
 
 INSERT INTO users (id, name, name_as_tag, email_address, "password", rights, status)
 	VALUES (1, 'admin', 'admin', 'root@localhost', 'admin', 4, 1);
+
 
