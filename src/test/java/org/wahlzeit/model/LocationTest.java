@@ -33,20 +33,4 @@ public class LocationTest {
 
     }
 
-    /**
-     *
-     */
-    @Test
-    public void testSetProperties() {
-        double x = 1.5, y = 24.8, z = 20.9;
-        Coordinate testCoordinate = new Coordinate(x, y, z);
-
-        location.setCoordinate(testCoordinate);
-
-        assertEquals(x, location.getCoordinate().getX(), 0);
-        assertEquals(y, location.getCoordinate().getY(), 0);
-        assertEquals(z, location.getCoordinate().getZ(), 0);
-
-    }
-
 }

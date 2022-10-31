@@ -54,7 +54,6 @@ public class Coordinate {
     }
 
 
-
     /**
      *
      * @methodtype get
@@ -68,7 +67,10 @@ public class Coordinate {
         return Math.sqrt(sum_square);
     }
 
-
+    /**
+     *
+     *
+     */
     @Override
     public boolean equals(Object otherCoordinate) {
         if (this == otherCoordinate) return true;
@@ -77,6 +79,10 @@ public class Coordinate {
         return isEqual(that);
     }
 
+    /**
+     *
+     *
+     */
     @Override
     public int hashCode() {
         return Objects.hash(x, y, z);

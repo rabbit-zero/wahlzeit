@@ -90,6 +90,7 @@ public abstract class ModelMain extends AbstractMain {
 			Photo newPhoto = photoManager.createPhoto(photoFiles[i]);
 			user.addPhoto(newPhoto);
 		}
+
 	}
 
 	
@@ -123,6 +124,20 @@ public abstract class ModelMain extends AbstractMain {
 		}
 		
 		stmt.close();
+
+		////delete later!!! did that here just for testing if storing loctions work //TODO
+		LocationManager LM = new LocationManager();
+
+		Coordinate coord = new Coordinate(0, 1,2);
+		Location loc = new Location(coord, "Test");
+
+		LM.deleteLocation(loc);
+		LM.addLocation(loc);
+
+		Coordinate coord2 = new Coordinate(827.9, 123.64,242.36);
+		Location loc2 = new Location(coord, "Test 2");
+		LM.deleteLocation(loc2);
+		LM.addLocation(loc2);
 	}
 
 	/**
