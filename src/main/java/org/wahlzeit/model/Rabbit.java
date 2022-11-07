@@ -7,11 +7,6 @@ public class Rabbit {
     private int size;
     private int age;
 
-    public Rabbit(String name, String race, int size, int age){
-        this.name = name;
-        this.race = race;
-        this.size = size;
-        this.age = age;
-    }
+
 
 }

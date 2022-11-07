@@ -93,7 +93,7 @@ public class Coordinate {
      *
      */
     public boolean isEqual(Coordinate otherCoordinate){
-        return otherCoordinate.getX() == x && otherCoordinate.getY() == y && otherCoordinate.getZ() == z;
+        return Double.compare(otherCoordinate.x, x) == 0 && Double.compare(otherCoordinate.y, y) == 0 && Double.compare(otherCoordinate.z, z) == 0;
     }
 
 

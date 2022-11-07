@@ -65,6 +65,26 @@ CREATE TABLE locations (
      z double precision
 );
 
+
+CREATE TABLE rabbit_photos (
+       id integer PRIMARY KEY,
+       owner_id integer REFERENCES users(id),
+       owner_name text,
+       owner_notify_about_praise boolean,
+       owner_email_address text,
+       owner_language integer,
+       owner_home_page text,
+       width integer,
+       height integer,
+       tags text,
+       status integer,
+       praise_sum integer,
+       no_votes integer,
+       creation_time bigint,
+       rabbit_name text,
+       rabbit_race text
+);
+
 INSERT INTO globals (id, last_user_id, last_photo_id, last_case_id, last_session_id)
 	VALUES (0, 1, 0, 0, 0);
 
