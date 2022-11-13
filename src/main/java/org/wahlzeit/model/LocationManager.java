@@ -18,11 +18,11 @@ public class LocationManager extends ObjectManager {
         double y = rset.getDouble("y");
         double z = rset.getDouble("z");
 
-        Coordinate locCoordinate = new Coordinate(x, y, z);
+        CartesianCoordinate locCartesianCoordinate = new CartesianCoordinate(x, y, z);
 
         String name = rset.getString("name");
 
-        locationObj = new Location(locCoordinate, name);
+        locationObj = new Location(locCartesianCoordinate, name);
 
 
         return locationObj;
@@ -34,16 +34,16 @@ public class LocationManager extends ObjectManager {
 
         try {
             int id = location.getId();
-            Coordinate coordinate = location.getCoordinate();
+            CartesianCoordinate cartesianCoordinate = location.getCoordinate();
             String name = location.getName();
             PreparedStatement stmt = getReadingStatement("INSERT INTO locations (id, name, x, y, z) VALUES(?,?,?,?,?)");
             //createObject(location, stmt, id);
 
             stmt.setInt(1, id);
             stmt.setString(2, name);
-            stmt.setDouble(3, coordinate.getX());
-            stmt.setDouble(4, coordinate.getY());
-            stmt.setDouble(5, coordinate.getZ());
+            stmt.setDouble(3, cartesianCoordinate.getX());
+            stmt.setDouble(4, cartesianCoordinate.getY());
+            stmt.setDouble(5, cartesianCoordinate.getZ());
 
             SysLog.logQuery(stmt);
             stmt.executeUpdate();

@@ -105,8 +105,8 @@ public class PhotoTest {
 
         //test location
         double x = 1.5, y = 24.8, z = 20.9;
-        Coordinate coordinate = new Coordinate(x, y, z);
-        Location location = new Location(coordinate);
+        CartesianCoordinate cartesianCoordinate = new CartesianCoordinate(x, y, z);
+        Location location = new Location(cartesianCoordinate);
         testPhoto.setLocation(location);
         assertEquals(location, testPhoto.getLocation());
 

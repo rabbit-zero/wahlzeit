@@ -15,8 +15,8 @@ public class LocationTest {
     @Before
     public void initLocation() {
 
-        Coordinate testCoordinate = new Coordinate(x, y, z);
-        location = new Location(testCoordinate);
+        CartesianCoordinate testCartesianCoordinate = new CartesianCoordinate(x, y, z);
+        location = new Location(testCartesianCoordinate);
     }
 
     /**

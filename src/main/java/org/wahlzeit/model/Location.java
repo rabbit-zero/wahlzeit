@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class Location extends DataObject {
 
-    private Coordinate coordinate;
+    private CartesianCoordinate cartesianCoordinate;
     private String name;
 
     private int id;
@@ -18,9 +18,9 @@ public class Location extends DataObject {
      *
      * @methodtype constructor
      */
-    public Location(Coordinate coordinate){
-        if(coordinate == null) throw new IllegalArgumentException();
-        this.coordinate = coordinate;
+    public Location(CartesianCoordinate cartesianCoordinate){
+        if(cartesianCoordinate == null) throw new IllegalArgumentException();
+        this.cartesianCoordinate = cartesianCoordinate;
         this.id = getNextId();
     }
 
@@ -28,9 +28,9 @@ public class Location extends DataObject {
      *
      * @methodtype constructor
      */
-    public Location(Coordinate coordinate, String name){
-        if(coordinate == null) throw new IllegalArgumentException();
-        this.coordinate = coordinate;
+    public Location(CartesianCoordinate cartesianCoordinate, String name){
+        if(cartesianCoordinate == null) throw new IllegalArgumentException();
+        this.cartesianCoordinate = cartesianCoordinate;
         this.name = name;
         this.id = getNextId();
     }
@@ -39,8 +39,8 @@ public class Location extends DataObject {
      *
      * @methodtype get
      */
-    public Coordinate getCoordinate(){
-        return coordinate;
+    public CartesianCoordinate getCoordinate(){
+        return cartesianCoordinate;
     }
 
 
@@ -57,8 +57,8 @@ public class Location extends DataObject {
      *
      * @methodtype set
      */
-    public void setCoordinate(Coordinate newCoordinate){
-        coordinate = newCoordinate;
+    public void setCoordinate(CartesianCoordinate newCartesianCoordinate){
+        cartesianCoordinate = newCartesianCoordinate;
     }
 
 
@@ -86,7 +86,7 @@ public class Location extends DataObject {
         double y = rset.getDouble("y");
         double z = rset.getDouble("z");
 
-        coordinate = new Coordinate(x, y, z);
+        cartesianCoordinate = new CartesianCoordinate(x, y, z);
         name = rset.getString("name");
 
     }
@@ -96,9 +96,9 @@ public class Location extends DataObject {
     public void writeOn(ResultSet rset) throws SQLException {
         rset.updateInt("id", id);
         rset.updateString("name", name);
-        rset.updateDouble("x", coordinate.getX());
-        rset.updateDouble("y", coordinate.getY());
-        rset.updateDouble("z", coordinate.getZ());
+        rset.updateDouble("x", cartesianCoordinate.getX());
+        rset.updateDouble("y", cartesianCoordinate.getY());
+        rset.updateDouble("z", cartesianCoordinate.getZ());
     }
 
 

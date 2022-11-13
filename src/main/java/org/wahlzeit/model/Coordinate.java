@@ -1,100 +1,15 @@
 package org.wahlzeit.model;
 
-import java.util.Objects;
+public interface Coordinate {
 
-public class Coordinate {
+    public CartesianCoordinate asCartesianCoordinate();
 
-    private double x;
-    private double y;
-    private double z;
+    public double getCartesianDistance(Coordinate otherCoordinate);
 
+    public SphericCoordinate asSphericCoordinate();
 
-    /**
-     *
-     * @methodtype constructor
-     */
-    public Coordinate(double x, double y, double z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+    public double getCentralAngle(Coordinate coordinate);
 
-    /**
-     *
-     * @methodtype get
-     */
-    public double getX(){
-        return x;
-    }
-
-    /**
-     *
-     * @methodtype get
-     */
-    public double getY(){
-        return y;
-    }
-
-    /**
-     *
-     * @methodtype get
-     */
-    public double getZ(){
-        return z;
-    }
-
-    /**
-     *
-     * @methodtype set
-     */
-    public void setCoordinates(double x, double y, double z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-
-    /**
-     *
-     * @methodtype get
-     */
-    public double getDistance(Coordinate otherCoordinate){
-        double a = otherCoordinate.getX() - x;
-        double b = otherCoordinate.getY() - y;
-        double c = otherCoordinate.getZ() - z;
-        double sum_square = Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2);
-
-        return Math.sqrt(sum_square);
-    }
-
-    /**
-     *
-     *
-     */
-    @Override
-    public boolean equals(Object otherCoordinate) {
-        if (this == otherCoordinate) return true;
-        if (otherCoordinate == null || getClass() != otherCoordinate.getClass()) return false;
-        Coordinate that = (Coordinate) otherCoordinate;
-        return isEqual(that);
-    }
-
-    /**
-     *
-     *
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y, z);
-    }
-
-    /**
-     *
-     *
-     */
-    public boolean isEqual(Coordinate otherCoordinate){
-        return Double.compare(otherCoordinate.x, x) == 0 && Double.compare(otherCoordinate.y, y) == 0 && Double.compare(otherCoordinate.z, z) == 0;
-    }
-
+    public boolean isEqual(Coordinate otherCoordinate);
 
 }
