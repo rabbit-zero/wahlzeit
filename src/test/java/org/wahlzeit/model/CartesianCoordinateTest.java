@@ -53,7 +53,7 @@ public class CartesianCoordinateTest {
         CartesianCoordinate b = new CartesianCoordinate(27, 76, 28);
         double calculatedDistance = 76.16;
 
-        assertEquals(calculatedDistance, a.getDistance(b), 0.1);
+        assertEquals(calculatedDistance, a.getCartesianDistance(b), 0.1);
     }
 
 

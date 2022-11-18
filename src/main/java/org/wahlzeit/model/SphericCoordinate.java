@@ -1,8 +1,7 @@
 package org.wahlzeit.model;
 
-import javax.swing.text.html.HTMLDocument;
 
-public class SphericCoordinate implements Coordinate {
+public class SphericCoordinate extends AbstractCoordinate {
 
     private double phi;
     private double theta;
@@ -70,34 +69,10 @@ public class SphericCoordinate implements Coordinate {
      *
      */
     @Override
-    public double getCartesianDistance(Coordinate coordinate) {
-        CartesianCoordinate otherCoordinate = coordinate.asCartesianCoordinate();
-        return otherCoordinate.getDistance(asCartesianCoordinate());
-    }
-
-    /**
-     *
-     */
-    @Override
     public SphericCoordinate asSphericCoordinate() {
         return this;
     }
 
-    /**
-     *
-     */
-    @Override
-    public double getCentralAngle(Coordinate coordinate) {
-        SphericCoordinate otherCoordinate = coordinate.asSphericCoordinate();
-        double deltaLamda = Math.abs(phi - otherCoordinate.getPhi());
-        double numerator = Math.pow(Math.cos(otherCoordinate.theta) * Math.sin(deltaLamda), 2) + 
-                Math.pow(Math.cos(theta) * Math.sin(otherCoordinate.theta) - Math.sin(theta) * Math.cos(otherCoordinate.theta) * Math.cos(deltaLamda) ,2);
-        
-        double denominator = Math.sin(theta) * Math.sin(otherCoordinate.theta) + 
-                Math.cos(theta) * Math.cos(otherCoordinate.theta) * Math.cos(deltaLamda); 
-
-        return Math.atan(Math.sqrt(numerator) / denominator);
-    }
 
     /**
      *
