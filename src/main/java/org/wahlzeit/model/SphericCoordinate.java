@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import java.util.Objects;
+
 public class SphericCoordinate extends AbstractCoordinate {
 
     private double phi;
@@ -85,6 +87,30 @@ public class SphericCoordinate extends AbstractCoordinate {
     @Override
     public SphericCoordinate asSphericCoordinate() {
         return this;
+    }
+
+    /**
+     *
+     *
+     */
+    @Override
+    public boolean equals(Object otherCoordinate) {
+        assert (otherCoordinate instanceof Coordinate);
+
+        if (this == otherCoordinate) return true;
+        if (getClass() != otherCoordinate.getClass()) return false;
+        SphericCoordinate that = (SphericCoordinate) otherCoordinate;
+
+        return isEqual(that);
+    }
+
+    /**
+     *
+     *
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(phi, theta, radius);
     }
 
 

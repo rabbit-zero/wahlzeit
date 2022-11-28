@@ -87,5 +87,20 @@ public class SphericCoordinateTest {
         SphericCoordinate otherCoordinate = new SphericCoordinate(p2, t2, r2);
         assertFalse(sphericCoordinate.isEqual(otherCoordinate));
 
+
+        Coordinate wrongCoordinateType = new CartesianCoordinate(12.2, 25.3, 32.7);
+        try{
+            otherCoordinate.equals(wrongCoordinateType);
+
+        } catch (AssertionError e){
+            System.out.println("Tested Assert");
+        }
+
+        try{
+            otherCoordinate.equals(null);
+        } catch (AssertionError e){
+            System.out.println("Tested Assert");
+        }
+
     }
 }

@@ -69,7 +69,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
      */
     @Override
     public boolean equals(Object otherCoordinate) {
-        assert (otherCoordinate instanceof CartesianCoordinate);
+        assert (otherCoordinate instanceof Coordinate);
 
         if (this == otherCoordinate) return true;
         if (getClass() != otherCoordinate.getClass()) return false;

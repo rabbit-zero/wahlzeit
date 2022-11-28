@@ -3,6 +3,8 @@ package org.wahlzeit.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.security.InvalidParameterException;
+
 import static org.junit.Assert.*;
 
 public class CartesianCoordinateTest {
@@ -26,6 +28,16 @@ public class CartesianCoordinateTest {
         assertEquals(x, cartesianCoordinate.getX(), 0);
         assertEquals(y, cartesianCoordinate.getY(), 0);
         assertEquals(z, cartesianCoordinate.getZ(), 0);
+
+        double a = Double.NaN, b = -983, c = 80.5;
+
+
+        try {
+            CartesianCoordinate cartCoord = new CartesianCoordinate(a, b, c);
+        } catch (AssertionError e){
+            System.out.println("Tested Assert NaN");
+        }
+
 
     }
 
@@ -54,6 +66,16 @@ public class CartesianCoordinateTest {
         double calculatedDistance = 76.16;
 
         assertEquals(calculatedDistance, a.getCartesianDistance(b), 0.1);
+
+        Coordinate wrongCoordinateType = new SphericCoordinate(12.2, 25.3, 32.7);
+        a.getCartesianDistance(wrongCoordinateType);
+
+        try{
+            a.getCartesianDistance(null);
+        } catch (AssertionError e){
+            System.out.println("Tested Assert not Null");
+        }
+
     }
 
 
@@ -67,6 +89,14 @@ public class CartesianCoordinateTest {
 
         CartesianCoordinate b = new CartesianCoordinate(73.7, 73.9, 73.2);
         assertFalse(a.equals(b));
+
+        Coordinate wrongCoordinateType = new SphericCoordinate(12.2, 25.3, 32.7);
+        try{
+            a.equals(wrongCoordinateType);
+
+        } catch (AssertionError e){
+            System.out.println("Tested Assert");
+        }
 
     }
 
