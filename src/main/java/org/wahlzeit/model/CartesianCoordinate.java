@@ -70,6 +70,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
     @Override
     public boolean equals(Object otherCoordinate) {
         assert (otherCoordinate instanceof Coordinate);
+        assertClassInvariants();
 
         if (this == otherCoordinate) return true;
         if (getClass() != otherCoordinate.getClass()) return false;
@@ -84,6 +85,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
      */
     @Override
     public int hashCode() {
+        assertClassInvariants();
         return Objects.hash(x, y, z);
     }
 
@@ -108,6 +110,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
      */
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
+        assertClassInvariants();
         return this;
     }
 

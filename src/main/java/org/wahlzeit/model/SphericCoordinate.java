@@ -96,6 +96,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     @Override
     public boolean equals(Object otherCoordinate) {
         assert (otherCoordinate instanceof Coordinate);
+        assertClassInvariants();
 
         if (this == otherCoordinate) return true;
         if (getClass() != otherCoordinate.getClass()) return false;
@@ -110,6 +111,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     @Override
     public int hashCode() {
+        assertClassInvariants();
         return Objects.hash(phi, theta, radius);
     }
 
