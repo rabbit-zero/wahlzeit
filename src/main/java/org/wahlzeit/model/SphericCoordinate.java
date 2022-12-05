@@ -22,6 +22,8 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
+
+        assertClassInvariants();
     }
 
     /**
@@ -60,6 +62,8 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = p;
         this.theta = t;
         this.radius = r;
+
+        assertClassInvariants();
     }
 
 
@@ -70,13 +74,21 @@ public class SphericCoordinate extends AbstractCoordinate {
     public CartesianCoordinate asCartesianCoordinate() {
         assertClassInvariants();
 
-        double x = radius * Math.sin(theta) * Math.cos(phi);
-        double y = radius * Math.sin(theta) * Math.sin(phi);
-        double z = radius * Math.cos(theta);
+        double x = 0, y = 0, z = 0;
+
+        try {
+            x = radius * Math.sin(theta) * Math.cos(phi);
+            y = radius * Math.sin(theta) * Math.sin(phi);
+            z = radius * Math.cos(theta);
+        } catch (ArithmeticException exception){
+            System.out.println("Calculation in Conversin to CartesianCoordinate went wrong!");
+        }
 
         assert (!Double.isNaN(x));
         assert (!Double.isNaN(y));
         assert (!Double.isNaN(z));
+
+        assertClassInvariants();
 
         return new CartesianCoordinate(x, y, z);
     }
@@ -102,6 +114,8 @@ public class SphericCoordinate extends AbstractCoordinate {
         if (getClass() != otherCoordinate.getClass()) return false;
         SphericCoordinate that = (SphericCoordinate) otherCoordinate;
 
+        assertClassInvariants();
+
         return isEqual(that);
     }
 
@@ -121,12 +135,15 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     @Override
     public boolean isEqual(Coordinate coordinate) {
-        assert (coordinate instanceof SphericCoordinate);
+        assert (coordinate != null);
 
         assertClassInvariants();
 
         if (getClass() != coordinate.getClass()) return false;
         SphericCoordinate otherCoordinate = coordinate.asSphericCoordinate();
+        if(otherCoordinate == null) throw new NullPointerException("Conversion to SphericCoordinate failed");
+        assertClassInvariants();
+
         return Double.compare(otherCoordinate.phi, phi) == 0 && Double.compare(otherCoordinate.theta, theta) == 0 && Double.compare(otherCoordinate.radius, radius) == 0;
     }
 

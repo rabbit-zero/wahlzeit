@@ -12,6 +12,18 @@ public class RabbitPhoto extends Photo{
     private String rabbitName;
     private String rabbitRace;
 
+    public RabbitPhoto(){
+        id = PhotoId.getNextId();
+        incWriteCount();
+    }
+
+
+    public RabbitPhoto(PhotoId myId){
+        if (myId == null) throw new IllegalArgumentException();
+
+        id = myId;
+        incWriteCount();
+    }
 
     /**
      *
@@ -22,6 +34,8 @@ public class RabbitPhoto extends Photo{
         this.rabbitRace = race;
 
         id = PhotoId.getNextId();
+        assert (id != null);
+
         incWriteCount();
 
     }
@@ -31,12 +45,19 @@ public class RabbitPhoto extends Photo{
      * @methodtype constructor
      */
     public RabbitPhoto(PhotoId myId, String name, String race) {
+        if (myId == null) throw new IllegalArgumentException();
+
         id = myId;
 
         this.rabbitName = name;
         this.rabbitRace = race;
 
         incWriteCount();
+    }
+
+
+    public RabbitPhoto(ResultSet rset) throws SQLException {
+        readFrom(rset);
     }
 
 

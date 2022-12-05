@@ -22,6 +22,8 @@ public class CartesianCoordinate extends AbstractCoordinate{
         this.x = x;
         this.y = y;
         this.z = z;
+
+        assertClassInvariants();
     }
 
     /**
@@ -60,6 +62,8 @@ public class CartesianCoordinate extends AbstractCoordinate{
         this.x = x;
         this.y = y;
         this.z = z;
+
+        assertClassInvariants();
     }
 
 
@@ -75,6 +79,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
         if (this == otherCoordinate) return true;
         if (getClass() != otherCoordinate.getClass()) return false;
         CartesianCoordinate that = (CartesianCoordinate) otherCoordinate;
+        assertClassInvariants();
 
         return isEqual(that);
     }
@@ -95,12 +100,15 @@ public class CartesianCoordinate extends AbstractCoordinate{
      */
     @Override
     public boolean isEqual(Coordinate coordinate){
-        assert (coordinate instanceof CartesianCoordinate);
+        assert (coordinate != null);
 
         assertClassInvariants();
 
         if (getClass() != coordinate.getClass()) return false;
         CartesianCoordinate otherCoordinate = coordinate.asCartesianCoordinate();
+        if(otherCoordinate == null) throw new NullPointerException("Conversion to SphericCoordinate failed");
+        assertClassInvariants();
+
         return Double.compare(otherCoordinate.x, x) == 0 && Double.compare(otherCoordinate.y, y) == 0 && Double.compare(otherCoordinate.z, z) == 0;
     }
 
@@ -123,31 +131,39 @@ public class CartesianCoordinate extends AbstractCoordinate{
     public SphericCoordinate asSphericCoordinate() {
         assertClassInvariants();
 
-        double radius = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
-        double theta = Math.acos( z / radius);
+        double phi = 0, radius = 0, theta = 0;
 
-        double phi;
+        try {
 
-        if (x > 0){
+            radius = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+            theta = Math.acos( z / radius);
 
-            if ( y >= 0) {
-                phi = Math.atan( y / x);
+            if (x > 0) {
 
-            }else {
-                phi = Math.atan( y / x) + 2 * Math.PI;
+                if (y >= 0) {
+                    phi = Math.atan(y / x);
+
+                } else {
+                    phi = Math.atan(y / x) + 2 * Math.PI;
+                }
+
+            } else if (x < 0) {
+                phi = Math.atan(y / x) + Math.PI;
+
+            } else {
+                phi = Math.signum(y) * Math.PI / 2;
             }
 
-        }else if (x < 0){
-            phi = Math.atan(y / x) + Math.PI;
-
-        }else {
-            phi = Math.signum(y) * Math.PI / 2;
+        } catch (ArithmeticException exception){
+            System.out.println("Calculation in Conversin to SphericCoordinate went wrong!");
         }
 
 
         assert (!Double.isNaN(phi));
         assert (!Double.isNaN(theta));
         assert (!Double.isNaN(radius));
+
+        assertClassInvariants();
 
         return new SphericCoordinate(phi, theta, radius);
     }
