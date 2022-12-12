@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class SphericCoordinate extends AbstractCoordinate {
 
-    private double phi;
-    private double theta;
-    private double radius;
+    private final double phi;
+    private final double theta;
+    private final double radius;
 
 
     /**
@@ -49,23 +49,6 @@ public class SphericCoordinate extends AbstractCoordinate {
     public double getRadius(){
         return radius;
     }
-
-    /**
-     *
-     * @methodtype set
-     */
-    public void setCoordinate(double p, double t, double r){
-        assert (!Double.isNaN(p));
-        assert (!Double.isNaN(t));
-        assert (!Double.isNaN(r));
-
-        this.phi = p;
-        this.theta = t;
-        this.radius = r;
-
-        assertClassInvariants();
-    }
-
 
     /**
      *

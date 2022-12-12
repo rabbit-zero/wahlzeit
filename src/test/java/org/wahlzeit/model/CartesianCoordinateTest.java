@@ -3,8 +3,6 @@ package org.wahlzeit.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.security.InvalidParameterException;
-
 import static org.junit.Assert.*;
 
 public class CartesianCoordinateTest {
@@ -41,19 +39,6 @@ public class CartesianCoordinateTest {
 
     }
 
-    /**
-     *
-     */
-    @Test
-    public void testSetProperties() {
-        double x = 0.815, y = 2.48, z = 20.17;
-        cartesianCoordinate.setCoordinate(x, y, z);
-
-        assertEquals(x, cartesianCoordinate.getX(), 0);
-        assertEquals(y, cartesianCoordinate.getY(), 0);
-        assertEquals(z, cartesianCoordinate.getZ(), 0);
-
-    }
 
 
     /**

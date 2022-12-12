@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate{
 
-    private double x;
-    private double y;
-    private double z;
+    private final double x;
+    private final double y;
+    private final double z;
 
 
     /**
@@ -48,22 +48,6 @@ public class CartesianCoordinate extends AbstractCoordinate{
      */
     public double getZ(){
         return z;
-    }
-
-    /**
-     *
-     * @methodtype set
-     */
-    public void setCoordinate(double x, double y, double z){
-        assert (!Double.isNaN(x));
-        assert (!Double.isNaN(y));
-        assert (!Double.isNaN(z));
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
-
-        assertClassInvariants();
     }
 
 
