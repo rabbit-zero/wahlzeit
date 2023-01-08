@@ -5,7 +5,14 @@
  
 package org.wahlzeit.services.mailing;
 
+import org.wahlzeit.PatternInstance;
 import org.wahlzeit.main.ServiceMain;
+
+
+@PatternInstance(
+		patternName = "Singleton",
+		participants = { "Singleton" }
+)
 
 /**
  * 

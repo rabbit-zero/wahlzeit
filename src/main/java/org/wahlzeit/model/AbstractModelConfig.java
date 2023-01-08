@@ -8,9 +8,15 @@ package org.wahlzeit.model;
 import java.io.*;
 import java.text.*;
 
+import org.wahlzeit.PatternInstance;
 import org.wahlzeit.main.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
+
+@PatternInstance(
+		patternName = "Strategy",
+		participants = { "Strategy" }
+)
 
 /**
  * A generic implementation of ModelConfig.

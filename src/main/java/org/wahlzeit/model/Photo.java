@@ -8,8 +8,15 @@ package org.wahlzeit.model;
 import java.sql.*;
 import java.net.*;
 
+import org.wahlzeit.PatternInstance;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
+
+@PatternInstance(
+		patternName = "Observer",
+		participants = { "ConcreteObserver" }
+)
+
 
 /**
  * A photo represents a user-provided (uploaded) photo.

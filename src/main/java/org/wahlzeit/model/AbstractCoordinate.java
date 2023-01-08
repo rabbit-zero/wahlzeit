@@ -1,7 +1,20 @@
 package org.wahlzeit.model;
 
 
+import org.wahlzeit.PatternInstance;
+
+import java.util.ArrayList;
+
+
+@PatternInstance(
+        patternName = "Flyweight",
+        participants = { "Flyweight Object"}
+)
+
+
 public abstract class AbstractCoordinate implements Coordinate{
+
+    protected static ArrayList<Coordinate> existingCoords = new ArrayList<>();
 
     /**
      *

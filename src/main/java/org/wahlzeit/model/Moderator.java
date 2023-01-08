@@ -7,6 +7,7 @@ package org.wahlzeit.model;
 
 import org.wahlzeit.services.*;
 
+
 /**
  * A Moderator is a system user with moderator privileges.
  */

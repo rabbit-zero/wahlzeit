@@ -1,7 +1,14 @@
 package org.wahlzeit.model;
 
 
+import org.wahlzeit.PatternInstance;
+
 import java.util.Objects;
+
+@PatternInstance(
+        patternName = "Flyweight",
+        participants = {"Concrete Flyweight"}
+)
 
 public class SphericCoordinate extends AbstractCoordinate {
 

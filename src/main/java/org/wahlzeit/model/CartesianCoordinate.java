@@ -1,6 +1,13 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.PatternInstance;
+
 import java.util.Objects;
+
+@PatternInstance(
+        patternName = "Flyweight",
+        participants = {"Concrete Flyweight"}
+)
 
 
 public class CartesianCoordinate extends AbstractCoordinate{
@@ -22,6 +29,29 @@ public class CartesianCoordinate extends AbstractCoordinate{
         this.x = x;
         this.y = y;
         this.z = z;
+
+        if(existingCoords.isEmpty()){
+            existingCoords.add(this);
+
+        }else{
+            boolean contains = false;
+            for(Coordinate coord : existingCoords){
+                if (coord instanceof CartesianCoordinate){
+                    CartesianCoordinate element = (CartesianCoordinate) coord;
+                    if (element.getX() == x && element.getY() == y && element.getZ() == z){
+                        contains = true;
+                        break;
+                    }
+                }
+            }
+
+            if(!contains) {
+                existingCoords.add(this);
+            }
+
+        }
+
+
 
         assertClassInvariants();
     }

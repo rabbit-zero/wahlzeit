@@ -8,8 +8,14 @@ package org.wahlzeit.model;
 import java.net.*;
 import java.text.*;
 
+import org.wahlzeit.PatternInstance;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
+
+@PatternInstance(
+		patternName = "Strategy",
+		participants = { "ConcreteStrategyA" }
+)
 
 /**
  * A model configuration for the English language.

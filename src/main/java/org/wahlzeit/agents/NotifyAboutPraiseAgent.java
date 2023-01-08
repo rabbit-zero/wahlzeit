@@ -8,10 +8,15 @@ package org.wahlzeit.agents;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.wahlzeit.PatternInstance;
 import org.wahlzeit.model.*;
 import org.wahlzeit.services.*;
 import org.wahlzeit.services.mailing.*;
 
+@PatternInstance(
+		patternName = "Observer",
+		participants = { "ConcreteSubject" }
+)
 
 /**
  * 
