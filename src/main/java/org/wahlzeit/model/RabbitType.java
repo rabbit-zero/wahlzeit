@@ -17,6 +17,7 @@ public class RabbitType {
      */
     public RabbitType(String name){
         typeName = name;
+        System.out.println("created new Type " + name);
     }
 
     /**
@@ -43,6 +44,11 @@ public class RabbitType {
         return subTypes.iterator();
     }
 
+
+    public Set<RabbitType> getSubTypes(){
+        return subTypes;
+    }
+
     /**
      *
      * @methodtype set
@@ -65,6 +71,7 @@ public class RabbitType {
         assert (rabbitType != null);
         rabbitType.setSuperType(this);
         subTypes.add(rabbitType);
+        System.out.println("added subType " + rabbitType.getTypeName() + " to " + rabbitType.getSuperType().getTypeName());
     }
 
 

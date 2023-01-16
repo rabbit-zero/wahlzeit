@@ -41,6 +41,7 @@ public class RabbitManager {
         assertIsValidRabbitTypeName(typeName);
         RabbitType rabbitType = getRabbitType(typeName);
         Rabbit result = rabbitType.createInstance();
+        System.out.println("created new Rabbit with type " + rabbitType.getTypeName());
         rabbits.put(result.getId(), result);
         return result;
     }
