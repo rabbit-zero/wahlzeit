@@ -3,14 +3,13 @@ package org.wahlzeit.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 
 public class RabbitPhoto extends Photo{
 
 
-    private String rabbitName;
-    private short rabbitAge;
+    private ArrayList<Rabbit> rabbits = new ArrayList<>();
 
     public RabbitPhoto(){
         id = PhotoId.getNextId();
@@ -29,9 +28,8 @@ public class RabbitPhoto extends Photo{
      *
      * @methodtype constructor
      */
-    public RabbitPhoto(String name, short age){
-        this.rabbitName = name;
-        this.rabbitAge = age;
+    public RabbitPhoto(ArrayList<Rabbit> r){
+        rabbits = r;
 
         id = PhotoId.getNextId();
         assert (id != null);
@@ -44,14 +42,11 @@ public class RabbitPhoto extends Photo{
      *
      * @methodtype constructor
      */
-    public RabbitPhoto(PhotoId myId, String name, short age) {
+    public RabbitPhoto(PhotoId myId, ArrayList<Rabbit> r) {
         if (myId == null) throw new IllegalArgumentException();
 
         id = myId;
-
-        this.rabbitName = name;
-        this.rabbitAge = age;
-
+        rabbits = r;
         incWriteCount();
     }
 
@@ -61,23 +56,6 @@ public class RabbitPhoto extends Photo{
     }
 
 
-    /**
-     *
-     * @methodtype get
-     */
-    public String getRabbitName(){
-        return rabbitName;
-    }
-
-    /**
-     *
-     * @methodtype get
-     */
-    public short getrabbitAge(){
-        return rabbitAge;
-
-    }
-
 
     /**
      *
@@ -85,9 +63,6 @@ public class RabbitPhoto extends Photo{
     @Override
     public void readFrom(ResultSet rset) throws SQLException {
         super.readFrom(rset);
-
-        rabbitName = rset.getString("name");
-        rabbitAge = rset.getShort("age");
     }
 
 
@@ -98,8 +73,6 @@ public class RabbitPhoto extends Photo{
     public void writeOn(ResultSet rset) throws SQLException {
         super.writeOn(rset);
 
-        rset.updateString("name", rabbitName);
-        rset.updateShort("age", rabbitAge);
     }
 
 

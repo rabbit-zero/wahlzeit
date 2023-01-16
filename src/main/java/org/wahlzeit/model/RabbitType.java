@@ -15,9 +15,8 @@ public class RabbitType {
      *
      * @methodtype construct
      */
-    public RabbitType(String name, RabbitType superType){
+    public RabbitType(String name){
         typeName = name;
-        this.superType = superType;
     }
 
     /**

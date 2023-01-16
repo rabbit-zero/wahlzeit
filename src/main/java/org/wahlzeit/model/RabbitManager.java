@@ -19,6 +19,7 @@ public class RabbitManager {
      * @methodtype constructor
      */
     public RabbitManager(HashSet<RabbitType> givenTypes){
+        assert (givenTypes != null);
         types = givenTypes;
     }
 
@@ -31,7 +32,8 @@ public class RabbitManager {
                 return type;
             }
         }
-        return null;
+
+        return new RabbitType(typeName);
     }
 
 
@@ -45,6 +47,7 @@ public class RabbitManager {
 
     public void assertIsValidRabbitTypeName(String name){
         assert (name != null);
+        assert (!name.equals(""));
     }
 
 }
