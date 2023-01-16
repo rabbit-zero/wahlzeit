@@ -10,7 +10,7 @@ public class RabbitPhoto extends Photo{
 
 
     private String rabbitName;
-    private String rabbitRace;
+    private short rabbitAge;
 
     public RabbitPhoto(){
         id = PhotoId.getNextId();
@@ -29,9 +29,9 @@ public class RabbitPhoto extends Photo{
      *
      * @methodtype constructor
      */
-    public RabbitPhoto(String name, String race){
+    public RabbitPhoto(String name, short age){
         this.rabbitName = name;
-        this.rabbitRace = race;
+        this.rabbitAge = age;
 
         id = PhotoId.getNextId();
         assert (id != null);
@@ -44,13 +44,13 @@ public class RabbitPhoto extends Photo{
      *
      * @methodtype constructor
      */
-    public RabbitPhoto(PhotoId myId, String name, String race) {
+    public RabbitPhoto(PhotoId myId, String name, short age) {
         if (myId == null) throw new IllegalArgumentException();
 
         id = myId;
 
         this.rabbitName = name;
-        this.rabbitRace = race;
+        this.rabbitAge = age;
 
         incWriteCount();
     }
@@ -73,8 +73,8 @@ public class RabbitPhoto extends Photo{
      *
      * @methodtype get
      */
-    public String getRabbitRace(){
-        return rabbitRace;
+    public short getrabbitAge(){
+        return rabbitAge;
 
     }
 
@@ -87,7 +87,7 @@ public class RabbitPhoto extends Photo{
         super.readFrom(rset);
 
         rabbitName = rset.getString("name");
-        rabbitRace = rset.getString("race");
+        rabbitAge = rset.getShort("age");
     }
 
 
@@ -99,7 +99,7 @@ public class RabbitPhoto extends Photo{
         super.writeOn(rset);
 
         rset.updateString("name", rabbitName);
-        rset.updateString("race", rabbitRace);
+        rset.updateShort("age", rabbitAge);
     }
 
 
