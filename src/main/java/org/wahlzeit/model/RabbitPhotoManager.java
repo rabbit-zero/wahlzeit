@@ -22,6 +22,7 @@ public class RabbitPhotoManager extends PhotoManager{
 
     @Override
     public void addPhoto(Photo photo) {
+        SysLog.logSysInfo("Rabbit photo added");
         PhotoId id = photo.getId();
         super.assertIsNewPhoto(id);
         super.doAddPhoto(photo);

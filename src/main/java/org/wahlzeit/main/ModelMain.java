@@ -31,7 +31,7 @@ public abstract class ModelMain extends AbstractMain {
 		
  		loadGlobals();
 
-		PhotoFactory.initialize();
+		RabbitPhotoFactory.initialize();
 	}
 	
 	/**
@@ -78,6 +78,7 @@ public abstract class ModelMain extends AbstractMain {
 		userManager.addUser(user);
 		
 		PhotoManager photoManager = RabbitPhotoManager.getInstance();
+		SysLog.logSysInfo("RabbitPhotoManagerInstance created");
 		File photoDirFile = new File(photoDir);
 		FileFilter photoFileFilter = new FileFilter() {
 			public boolean accept(File file) {
@@ -88,6 +89,7 @@ public abstract class ModelMain extends AbstractMain {
 		File[] photoFiles = photoDirFile.listFiles(photoFileFilter);
 		for (int i = 0; i < photoFiles.length; i++) {
 			Photo newPhoto = photoManager.createPhoto(photoFiles[i]);
+			SysLog.logSysInfo("Photo Instance created");
 			user.addPhoto(newPhoto);
 		}
 
@@ -126,6 +128,7 @@ public abstract class ModelMain extends AbstractMain {
 		stmt.close();
 
 		////delete later!!! did that here just for testing if storing loctions work //TODO
+		/*
 		LocationManager LM = new LocationManager();
 
 		CartesianCoordinate coord = new CartesianCoordinate(0, 1,2);
@@ -138,6 +141,9 @@ public abstract class ModelMain extends AbstractMain {
 		Location loc2 = new Location(coord, "Test 2");
 		LM.deleteLocation(loc2);
 		LM.addLocation(loc2);
+
+
+		 */
 	}
 
 	/**

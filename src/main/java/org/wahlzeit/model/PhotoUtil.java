@@ -23,6 +23,9 @@ public class PhotoUtil {
 	 */
 	public static Photo createPhoto(File source, PhotoId id) throws Exception {
 		Photo result = PhotoFactory.getInstance().createPhoto(id);
+		SysLog.logSysInfo("RabbitPhoto created in PhotoUtil");
+		if(result instanceof RabbitPhoto) SysLog.logSysInfo("it is really RabbitPhoto");
+		else SysLog.logSysInfo("not a RabbitPhoto");
 		
 		Image sourceImage = createImageFiles(source, id);
 

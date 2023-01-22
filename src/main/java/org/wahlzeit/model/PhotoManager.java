@@ -119,7 +119,8 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-		return PhotoFactory.getInstance().createPhoto(rset);
+		SysLog.logSysInfo("creation of RabbitPhoto here in PhotoManager");
+		return RabbitPhotoFactory.getInstance().createPhoto(rset);
 	}
 	
 	/**
@@ -128,6 +129,7 @@ public class PhotoManager extends ObjectManager {
 	 * Load all persisted photos. Executed when Wahlzeit is restarted.
 	 */
 	public void addPhoto(Photo photo) {
+		SysLog.logSysInfo("Not a rabbit photo added");
 		PhotoId id = photo.getId();
 		assertIsNewPhoto(id);
 		doAddPhoto(photo);
